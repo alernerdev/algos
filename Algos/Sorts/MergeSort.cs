@@ -19,6 +19,8 @@ namespace Algos
 
 			Console.WriteLine("_sort: left {0} right {1}", left, right);
 
+			// keep splitting the array till you end up with left and right arrays of size 1
+
 			if (right > left)
 			{
 				mid = (right + left) / 2;
@@ -33,30 +35,35 @@ namespace Algos
 		{
 			Console.WriteLine("_merge: left {0} mid {1} right {2}", left, mid, right);
 
-			T [] temp = new T[25];
-			int i, left_end, num_elements, tmp_pos;
+			T [] results = new T[25];
+			int i, left_end, num_elements, results_pos;
 
 			left_end = (mid - 1);
-			tmp_pos = left;
+			results_pos = left;
 			num_elements = (right - left + 1);
 
+			// imagine you have left and right arrays here and you compare the start of left and right array and
+			// keep taking whatever is smaller while "popping" the front of that array
 			while ((left <= left_end) && (mid <= right))
 			{
 				if (arr[left].CompareTo(arr[mid]) <= 0)
-					temp[tmp_pos++] = arr[left++];
+					results[results_pos++] = arr[left++];
 				else
-					temp[tmp_pos++] = arr[mid++];
+					results[results_pos++] = arr[mid++];
 			}
 
+			// we have reached the end of either left or right array.  Copy over whatever is left over.  Only one "branch" still has data --
+			// the other is empty
 			while (left <= left_end)
-				temp[tmp_pos++] = arr[left++];
+				results[results_pos++] = arr[left++];
 
 			while (mid <= right)
-				temp[tmp_pos++] = arr[mid++];
+				results[results_pos++] = arr[mid++];
 
+			// finally copy sorted data into the original array
 			for (i = 0; i < num_elements; i++)
 			{
-				arr[right] = temp[right];
+				arr[right] = results[right];
 				right--;
 			}
 		}

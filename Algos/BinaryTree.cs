@@ -17,6 +17,29 @@ namespace Algos
 			print(m_root);
 		}
 
+		public void BreadthPrint()
+		{
+			if (m_root == null)
+				return;
+
+			Queue<TreeNode<T>> q = new Queue<TreeNode<T>>();
+			q.Enqueue(m_root);
+
+			TreeNode<T> node;
+			while (q.Count > 0)
+			{
+				node = q.Dequeue();
+				Console.Write(node.elem);
+				Console.Write(" ");
+
+				if (node.left != null)
+					q.Enqueue(node.left);
+
+				if (node.right != null)
+					q.Enqueue(node.right);
+			}
+		}
+
 		void print(TreeNode<T> leaf) 
 		{
 			if (leaf == null)

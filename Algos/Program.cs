@@ -18,12 +18,12 @@ namespace Algos
 			//QuickSortTest();
 			//SelectionSortTest();
 
-			//BinaryTreeTest();
+			BinaryTreeTest();
 			//StackArrayTest();
 
 			//NaiveTextSearch();
 
-			//MergeSortTest();
+			MergeSortTest();
 
 			Console.WriteLine("hit any key to continue");
 			Console.ReadLine();
@@ -84,16 +84,20 @@ namespace Algos
 			BinaryTree<int> b = new BinaryTree<int>();
 			b.Insert(5);
 			b.Print();
+			b.BreadthPrint();
 
 			b.Insert(2);
 			b.Insert(6);
 			b.Print();
-
+			b.BreadthPrint();
+			
 			b.Insert(17);
 			b.Insert(25);
 			b.Insert(12);
 			b.Insert(24);
 			b.Print();
+			b.BreadthPrint();
+
 
 			TreeNode<int> t = b.Search(17);
 			Console.WriteLine(t.elem);
